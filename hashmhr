@@ -1,0 +1,65 @@
+#funcao idealizada por Felipe Baptista e ajustada com a malemolência do chatgpt porque a preguiça tá grande e a vontade de resolver problemas é maior do que a de ficar escovando bit.
+
+function hashmhr() {
+    # Verifica se o argumento foi passado
+    if [ -z "$1" ]; then
+        echo "Uso: hashmhr <hash>"
+        return 1
+    fi
+
+    hash=$1
+    length=${#hash}
+
+    # Define o tipo de hash
+    if [ $length -eq 32 ]; then
+        type="MD5"
+    elif [ $length -eq 40 ]; then
+        type="SHA1"
+    elif [ $length -eq 64 ]; then
+        type="SHA256"
+    else
+        echo "❌ Hash inválido ou comprimento não reconhecido: $length caracteres"
+        echo "   (suportados: MD5=32, SHA1=40, SHA256=64)"
+        return 1
+    fi
+
+    echo "🔍 Tipo de hash detectado: $type"
+
+    if [ "$type" = "SHA256" ]; then
+        # Divide em dois segmentos de 32 caracteres
+        part1=${hash:0:32}
+        part2=${hash:32:32}
+        query="${part1}.${part2}.hash.cymru.com"
+
+        # Consulta do tipo A
+        result=$(dig +short "$query" A)
+
+        if [ "$result" = "127.0.0.2" ]; then
+            echo "⚠️  Resultado: hash encontrado no Malware Hash Registry (malicioso)"
+        elif [ -z "$result" ]; then
+            echo "✅ Hash não encontrado no Malware Hash Registry"
+        else
+            echo "❔ Resultado inesperado: $result"
+        fi
+
+    else
+        # Consulta do tipo TXT (MD5 / SHA1)
+        query="${hash}.hash.cymru.com"
+        result=$(dig +short "$query" TXT | tr -d '"')
+
+        if [ -z "$result" ]; then
+            echo "✅ Hash não encontrado no Malware Hash Registry"
+            return 0
+        fi
+
+        # Separa os campos (epoch e percentual)
+        epoch=$(echo "$result" | awk '{print $1}')
+        detection=$(echo "$result" | awk '{print $2}')
+
+        # Converte epoch para data legível
+        timestamp=$(date -d @"$epoch" '+%Y-%m-%d %H:%M:%S' 2>/dev/null)
+
+        echo "📅 Última análise: $timestamp"
+        echo "⚠️  Detecção: ${detection}%"
+    fi
+}
