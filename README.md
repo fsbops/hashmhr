@@ -12,8 +12,8 @@ Função shell para checar MD5 / SHA1 / SHA256 via DNS queries.
 
 ## Uso
 
-Coloque a função no seu `~/.bashrc`, `~/.zshrc` ou no seu arquico `.bash_aliases` na home do seu usuário. Abra um novo terminal e teste.
-Função facilmente convertível em um script shell também.
+Coloque a função no seu `~/.bashrc`, `~/.zshrc` ou no seu arquivo `.bash_aliases` na home do seu usuário. Abra um novo terminal e teste.
+Função facilmente convertível em um script shell também, nada de complexo por aqui.
 
 ---
 
