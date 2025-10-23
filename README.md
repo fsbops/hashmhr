@@ -62,10 +62,10 @@ Não use em ambientes sensíveis sem autorização.
 
 ## Melhorias futuras:
 
---saida em json para um melhor aproveitamento e integração do recurso com plataformas diversas (chamada do script sob demanda e coleta do retorno, por exemplo)
---suporte a leitura de um arquivo com vários hashes (modo batch)
---verificação de conectividade DNS e fallback
---integração com jq/curl para enriquecer com info de outras fontes/multiplas consultas e varias fontes
+--saida em json para um melhor aproveitamento e integração do recurso com plataformas diversas (chamada do script sob demanda e coleta do retorno, por exemplo)</br>
+--suporte a leitura de um arquivo com vários hashes (modo batch)</br>
+--verificação de conectividade DNS e fallback</br>
+--integração com jq/curl para enriquecer com info de outras fontes/multiplas consultas e varias fontes</br>
 
 ## Licença
 MIT — sinta-se livre para usar, modificar e distribuir.
