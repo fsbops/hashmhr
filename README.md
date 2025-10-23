@@ -23,42 +23,46 @@ hashmhr <hash>
 
 Exemplos:
 
-hashmhr d41d8cd98f00b204e9800998ecf8427e
-hashmhr da39a3ee5e6b4b0d3255bfef95601890afd80709
-hashmhr 2d83c4d620866f4ae647ed6a70113686bb7b80b1a7bbdcf544fd0ffec105c4a6
-
+hashmhr d41d8cd98f00b204e9800998ecf8427e </br>
+hashmhr da39a3ee5e6b4b0d3255bfef95601890afd80709 </br>
+hashmhr 2d83c4d620866f4ae647ed6a70113686bb7b80b1a7bbdcf544fd0ffec105c4a6 </br>
+ 
 ---
 
 ## Saída esperada
 
-MD5 / SHA1 (TXT query):
-Se não encontrado: ✅ Hash não encontrado no Malware Hash Registry
-Se encontrado: retorna epoch (convertido para data legível) e percentual de detecção.
-📅 Última análise: 2025-10-21 14:22:03
-⚠️  Detecção: 78%
+MD5 / SHA1 (TXT query):</br>
+Se não encontrado: </br>
+✅ Hash não encontrado no Malware Hash Registry</br>
+</br>
+Se encontrado: </br>
+Retorna epoch (convertido para data legível) e percentual de detecção.</br>
+📅 Última análise: 2025-10-21 14:22:03</br>
+⚠️  Detecção: 78%</br>
 
 
-SHA256 (query do tipo A):
-se o retorno for 127.0.0.2 a hash é considerada maliciosa, e portanto, o retorno legível será:
-"🔍 Tipo de hash detectado: SHA256
-⚠️  Resultado: hash encontrado no Malware Hash Registry (malicioso)"
-se o retorno for vazio (null) significa que não foi encontrado nenhum dado a respeito da hash e o retorno legível será algo como:
-"🔍 Tipo de hash detectado: SHA256
-✅ Hash não encontrado no Malware Hash Registry"
+SHA256 (query do tipo A):</br>
+Se o retorno for 127.0.0.2 a hash é considerada maliciosa, e portanto, o retorno legível será:</br>
+"🔍 Tipo de hash detectado: SHA256</br>
+⚠️  Resultado: hash encontrado no Malware Hash Registry (malicioso)"</br>
+
+Se o retorno for vazio (null) significa que não foi encontrado nenhum dado a respeito da hash e o retorno legível será algo como:</br>
+"🔍 Tipo de hash detectado: SHA256</br>
+✅ Hash não encontrado no Malware Hash Registry"</br>
 
 ---
 
 ## Requisitos:
-dig (do pacote bind9-dnsutils / dnsutils)
-bash (funciona em shells compatíveis)
-Conexão DNS funcional (resolução externa)
+dig (do pacote bind9-dnsutils / dnsutils)</br>
+bash (funciona em shells compatíveis)</br>
+Conexão DNS funcional (resolução externa)</br>
 
 ---
 
 ## Limitações e Segurança
-O serviço do Team Cymru tem limites e políticas de uso; não faça varreduras massivas indiscriminadas.
-Resultados dependem da base de dados pública — sempre valide com outras fontes se for um incidente crítico.
-Não use em ambientes sensíveis sem autorização.
+O serviço do Team Cymru tem limites e políticas de uso; não faça varreduras massivas indiscriminadas.</br>
+Resultados dependem da base de dados pública — sempre valide com outras fontes se for um incidente crítico.</br>
+Não use em ambientes sensíveis sem autorização.</br>
 
 ## Melhorias futuras:
 
